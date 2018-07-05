@@ -11,11 +11,11 @@ import UIKit
 class ZYImageScrollView: UIScrollView {
     
     let imageView = UIImageView()
-    private var currentImage : UIImage?
-    private let observePath = "image"
-    private var isDismissing: Bool = false
-    private var avoidUp: Bool = false
-    private var maxTopBottomInset: CGFloat = 0
+    fileprivate var currentImage : UIImage?
+    fileprivate let observePath = "image"
+    fileprivate var isDismissing: Bool = false
+    fileprivate var avoidUp: Bool = false
+    fileprivate var maxTopBottomInset: CGFloat = 0
     var scrollHandler: ((_ percent: CGFloat) -> Void)?
     var dismissHandler: (() -> Void)?
     
@@ -34,7 +34,7 @@ class ZYImageScrollView: UIScrollView {
         setupImageView()
     }
     
-    private func setupImageView() {
+    fileprivate func setupImageView() {
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.addObserver(self, forKeyPath: observePath, options: .new, context: nil)
@@ -62,7 +62,7 @@ class ZYImageScrollView: UIScrollView {
         maxTopBottomInset = zy_height / 2 + imageView.zy_height / 2
     }
     
-    private func updateFrame() {
+    fileprivate func updateFrame() {
         guard let image = currentImage else { return }
         let toH = image.size.height * zy_width / image.size.width
         imageView.frame = CGRect(x: 0, y: 0, width: zy_width, height: toH)
@@ -77,7 +77,7 @@ class ZYImageScrollView: UIScrollView {
         imageView.center = CGPoint(x: (contentSize.width + horizontalAdd) / 2, y: (contentSize.height + verticalAdd) / 2)
     }
     
-    private func adjustMaximumZoomScale() {
+    fileprivate func adjustMaximumZoomScale() {
         guard let image = currentImage else { return }
         let iw = image.size.width
         let ih = image.size.height
@@ -126,7 +126,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
         }
     }
     
-    private func doPan() {
+    fileprivate func doPan() {
         switch panGestureRecognizer.state {
         case .began:
             PVLog("began")

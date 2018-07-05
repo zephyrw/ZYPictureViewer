@@ -44,22 +44,22 @@ public extension ZYPictureViewerControllerDelegate {
 public class ZYPictureViewerController: UIPageViewController {
     
     public var currentPage: Int = 0
-    private let maxReusePageCount: Int = 3
-    private let animationTransitionContr = ZYAnimationTransitionController()
-    private var currentSourceImageView: UIImageView? {
+    fileprivate let maxReusePageCount: Int = 3
+    fileprivate let animationTransitionContr = ZYAnimationTransitionController()
+    fileprivate var currentSourceImageView: UIImageView? {
         get{
             return zy_dataSource?.zy_pictureViewerController(self, sourceImageViewForPage: currentPage)
         }
     }
-    private var currentImageScrollView: ZYImageScrollViewController {
+    fileprivate var currentImageScrollView: ZYImageScrollViewController {
         get{
             return reuseVCs[currentPage % maxReusePageCount]
         }
     }
     public weak var zy_dataSource: ZYPictureViewerControllerDataSource?
     public weak var zy_delegate: ZYPictureViewerControllerDelegate?
-    private lazy var pageCount = zy_dataSource?.zy_pictureViewerController(pageCountForPageVC: self)
-    private lazy var reuseVCs: [ZYImageScrollViewController] = {
+    fileprivate var pageCount = 0
+    fileprivate lazy var reuseVCs: [ZYImageScrollViewController] = {
         var vcs = [ZYImageScrollViewController]()
         for index in 0..<3 {
             let imageScrollVC = ZYImageScrollViewController()
@@ -67,8 +67,8 @@ public class ZYPictureViewerController: UIPageViewController {
         }
         return vcs
     }()
-    private let blackBg = UIView()
-    private let pageControl = UIPageControl(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
+    fileprivate let blackBg = UIView()
+    fileprivate let pageControl = UIPageControl(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         if let options = options {
@@ -89,14 +89,15 @@ public class ZYPictureViewerController: UIPageViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        assert(pageCount != nil, "You should conform PVViewControllerDataSource and implement method: pv_viewController(pageCountForPageVC pv_viewController: PVViewController) -> Int")
+        pageCount = zy_dataSource?.zy_pictureViewerController(pageCountForPageVC: self) ?? 0
+        assert(pageCount != 0, "You should conform PVViewControllerDataSource and implement method: pv_viewController(pageCountForPageVC pv_viewController: PVViewController) -> Int")
         self.dataSource = self
         self.delegate = self
         self.animationTransitionContr.delegate = self
         setupSubviews()
     }
     
-    private func setupSubviews() {
+    fileprivate func setupSubviews() {
         blackBg.backgroundColor = UIColor.black
         blackBg.frame = view.bounds
         self.setupCurrentVC(page: currentPage)
@@ -105,19 +106,18 @@ public class ZYPictureViewerController: UIPageViewController {
         pageControl.center = CGPoint(x: view.zy_centerX, y: view.zy_bottom - pageControl.zy_height / 2 - 10)
         pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 0.3)
         pageControl.currentPageIndicatorTintColor = UIColor(white: 1, alpha: 0.8)
-        pageControl.numberOfPages = pageCount!
+        pageControl.numberOfPages = pageCount
         pageControl.currentPage = currentPage
         view.addSubview(pageControl)
     }
     
-    private func setupCurrentVC(page: Int) {
+    fileprivate func setupCurrentVC(page: Int) {
         guard let vc = reuseController(page: page) else { return }
         vc.page = page
         setViewControllers([vc], direction: .forward, animated: false, completion: nil)
     }
     
     fileprivate func reuseController(page: Int) -> ZYImageScrollViewController? {
-        guard let pageCount = pageCount else { return nil }
         if page >= 0 && page < pageCount {
             let imageScrollVC = reuseVCs[page % maxReusePageCount]
             imageScrollVC.page = page
@@ -148,7 +148,7 @@ public class ZYPictureViewerController: UIPageViewController {
         presentingViewController?.view.window?.windowLevel = UIWindowLevelStatusBar
     }
     
-    private func setupGesture() {
+    fileprivate func setupGesture() {
         let singleTapGest = UITapGestureRecognizer(target: self, action: #selector(singleTapped(tapGest:)))
         let doubleTapGest = UITapGestureRecognizer(target: self, action: #selector(doubleTapped(tapGest:)))
         doubleTapGest.numberOfTapsRequired = 2

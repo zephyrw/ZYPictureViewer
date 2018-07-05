@@ -19,7 +19,7 @@ protocol ZYAnimationTransitionControllerDelegate: NSObjectProtocol {
 
 class ZYAnimationTransitionController: NSObject {
     
-    private var isPresenting = false
+    fileprivate var isPresenting = false
     weak var delegate: ZYAnimationTransitionControllerDelegate?
     
     func prepareForPresent() -> ZYAnimationTransitionController {

@@ -10,8 +10,8 @@ import UIKit
 
 class ZY_ProgressView: UIView {
     
-    private var containerView : UIView?
-    private static let share = ZY_ProgressView()
+    fileprivate var containerView : UIView?
+    fileprivate static let share = ZY_ProgressView()
     
     override init(frame: CGRect) {
         let wh: CGFloat = 48
@@ -41,7 +41,7 @@ class ZY_ProgressView: UIView {
         }
     }
     
-    private func setupSubviews() {
+    fileprivate func setupSubviews() {
         let lineW: CGFloat = 4
         let radius = (zy_width - lineW) / 2
         let path = UIBezierPath(arcCenter: CGPoint(x: zy_width / 2, y: zy_height / 2), radius: radius, startAngle: CGFloat.pi * 1.5, endAngle: CGFloat.pi * 5.5, clockwise: true)
