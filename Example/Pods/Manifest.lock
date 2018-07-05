@@ -1,0 +1,16 @@
+PODS:
+  - ZYPictureViewer (0.1.0)
+
+DEPENDENCIES:
+  - ZYPictureViewer (from `../`)
+
+EXTERNAL SOURCES:
+  ZYPictureViewer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ZYPictureViewer: 9581dfef5607eb5390d34e3d5eff93e782e30b4a
+
+PODFILE CHECKSUM: 025da8714df74e7ecb893c64a5732084c6ab8f99
+
+COCOAPODS: 1.5.3
