@@ -14,7 +14,7 @@ let ZY_SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 public protocol ZYPictureViewerControllerDataSource: NSObjectProtocol {
     func zy_pictureViewerController(pageCountForPageVC pv_viewController: ZYPictureViewerController) -> Int
     func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, page: Int) -> UIImage?
-    func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, page: Int, imageView: UIImageView, progressHandler: ((NSInteger, NSInteger, URL?) -> Void)?)
+    func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, page: Int, imageView: UIImageView, progressHandler: @escaping (NSInteger, NSInteger, URL?) -> Void)
     func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, sourceImageViewForPage page: Int) -> UIImageView?
 }
 
@@ -23,7 +23,7 @@ public extension ZYPictureViewerControllerDataSource {
         return nil
     }
     
-    func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, page: Int, imageView: UIImageView, progressHandler: ((NSInteger, NSInteger, URL?) -> Void)?) {
+    func zy_pictureViewerController(_ pv_viewController: ZYPictureViewerController, page: Int, imageView: UIImageView, progressHandler: @escaping (NSInteger, NSInteger, URL?) -> Void) {
     }
 }
 
@@ -44,6 +44,9 @@ public extension ZYPictureViewerControllerDelegate {
 public class ZYPictureViewerController: UIPageViewController {
     
     public var currentPage: Int = 0
+    public weak var zy_dataSource: ZYPictureViewerControllerDataSource?
+    public weak var zy_delegate: ZYPictureViewerControllerDelegate?
+    
     fileprivate let maxReusePageCount: Int = 3
     fileprivate let animationTransitionContr = ZYAnimationTransitionController()
     fileprivate var currentSourceImageView: UIImageView? {
@@ -56,8 +59,6 @@ public class ZYPictureViewerController: UIPageViewController {
             return reuseVCs[currentPage % maxReusePageCount]
         }
     }
-    public weak var zy_dataSource: ZYPictureViewerControllerDataSource?
-    public weak var zy_delegate: ZYPictureViewerControllerDelegate?
     fileprivate var pageCount = 0
     fileprivate lazy var reuseVCs: [ZYImageScrollViewController] = {
         var vcs = [ZYImageScrollViewController]()
@@ -68,7 +69,8 @@ public class ZYPictureViewerController: UIPageViewController {
         return vcs
     }()
     fileprivate let blackBg = UIView()
-    fileprivate let pageControl = UIPageControl(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
+//    fileprivate let pageControl = UIPageControl(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
+    fileprivate let pageIndexLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         if let options = options {
@@ -103,12 +105,18 @@ public class ZYPictureViewerController: UIPageViewController {
         self.setupCurrentVC(page: currentPage)
         setupGesture()
         view.insertSubview(blackBg, at: 0)
-        pageControl.center = CGPoint(x: view.zy_centerX, y: view.zy_bottom - pageControl.zy_height / 2 - 10)
-        pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 0.3)
-        pageControl.currentPageIndicatorTintColor = UIColor(white: 1, alpha: 0.8)
-        pageControl.numberOfPages = pageCount
-        pageControl.currentPage = currentPage
-        view.addSubview(pageControl)
+//        pageControl.center = CGPoint(x: view.zy_centerX, y: view.zy_bottom - pageControl.zy_height / 2 - 10)
+//        pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 0.3)
+//        pageControl.currentPageIndicatorTintColor = UIColor(white: 1, alpha: 0.8)
+//        pageControl.numberOfPages = pageCount
+//        pageControl.currentPage = currentPage
+//        view.addSubview(pageControl)
+        pageIndexLabel.textColor = .white
+        pageIndexLabel.textAlignment = .center
+        pageIndexLabel.font = UIFont.systemFont(ofSize: 14)
+        pageIndexLabel.center = CGPoint(x: view.zy_centerX, y: view.zy_bottom - pageIndexLabel.zy_height / 2 - 10)
+        pageIndexLabel.text = "\(currentPage + 1)/\(pageCount)"
+        view.addSubview(pageIndexLabel)
     }
     
     fileprivate func setupCurrentVC(page: Int) {
@@ -161,7 +169,11 @@ public class ZYPictureViewerController: UIPageViewController {
     }
     
     @objc func singleTapped(tapGest: UITapGestureRecognizer) {
-        zy_delegate?.zy_pictureViewerController(singleTapped: self)
+        if let delegate = zy_delegate {
+            delegate.zy_pictureViewerController(singleTapped: self)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func doubleTapped(tapGest: UITapGestureRecognizer) {
@@ -205,7 +217,8 @@ extension ZYPictureViewerController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let imageScrollVC = pageViewController.viewControllers?.first as? ZYImageScrollViewController else { return }
         currentPage = imageScrollVC.page
-        pageControl.currentPage = imageScrollVC.page
+//        pageControl.currentPage = imageScrollVC.page
+        pageIndexLabel.text = "\(imageScrollVC.page + 1)/\(pageCount)"
     }
     
 }

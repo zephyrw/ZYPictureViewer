@@ -12,20 +12,15 @@ class ZYImageScrollViewController: UIViewController {
     
     var page: Int = 0
     let imageScrollView = ZYImageScrollView(frame: UIScreen.main.bounds)
-    var progressHandler: ((_ finishedSize: NSInteger,_ totalSize: NSInteger, URL?) -> Void)?
+    var progressHandler: ((_ finishedSize: NSInteger,_ totalSize: NSInteger, URL?) -> Void)!
     var imageHandler: (() -> UIImage?)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         progressHandler = { [weak self] (finishedSize, totalSize, _) in
             if let strongSelf = self, totalSize > 0 {
-                DispatchQueue.main.async {
-                    ZY_ProgressView.show(in: strongSelf.view)
-                    let progress = CGFloat(finishedSize) / CGFloat(totalSize)
-                    if progress >= 1 {
-                        ZY_ProgressView.dismiss()
-                    }
-                }
+                let progress = CGFloat(finishedSize) / CGFloat(totalSize)
+                ZY_ProgressView.show(in: strongSelf.view, progress: progress)
             }
         }
     }
@@ -40,6 +35,7 @@ class ZYImageScrollViewController: UIViewController {
     }
     
     func reloadData() {
+        ZY_ProgressView.dismiss(containerView: view)
         if let imageHandler = imageHandler {
             imageScrollView.imageView.image = imageHandler()
         }
