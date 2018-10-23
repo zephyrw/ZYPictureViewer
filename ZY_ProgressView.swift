@@ -45,6 +45,7 @@ class ZY_ProgressView: UIView {
         let lineW: CGFloat = 4
         let radius = (zy_width - lineW) / 2
         let path = UIBezierPath(arcCenter: CGPoint(x: zy_width / 2, y: zy_height / 2), radius: radius, startAngle: CGFloat.pi * 1.5, endAngle: CGFloat.pi * 5.5, clockwise: true)
+        
         let shapeLayer = CAShapeLayer()
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor.white.cgColor
@@ -54,10 +55,12 @@ class ZY_ProgressView: UIView {
         shapeLayer.frame = bounds
         shapeLayer.path = path.cgPath
         layer.addSublayer(shapeLayer)
+        
         let maskLayer = CALayer()
         maskLayer.frame = shapeLayer.bounds
-        maskLayer.contents = #imageLiteral(resourceName: "angle-mask").cgImage
+        maskLayer.contents = UIImage(named: "angle-mask")?.cgImage
         shapeLayer.mask = maskLayer
+        
         let animationDuration: CFTimeInterval = 1
         let linearCurve = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         let rotateAni = CABasicAnimation(keyPath: "transform.rotation")
@@ -69,11 +72,13 @@ class ZY_ProgressView: UIView {
         rotateAni.isRemovedOnCompletion = false
         rotateAni.fillMode = kCAFillModeForwards
         shapeLayer.mask?.add(rotateAni, forKey: "rotateAni")
+        
         let aniGroup = CAAnimationGroup()
         aniGroup.duration = animationDuration
         aniGroup.repeatCount = MAXFLOAT
         aniGroup.isRemovedOnCompletion = false
         aniGroup.timingFunction = linearCurve
+        
         let strokeStartAni = CABasicAnimation(keyPath: "strokeStart")
         strokeStartAni.fromValue = 0.015
         strokeStartAni.toValue = 0.515

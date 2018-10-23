@@ -1,6 +1,0 @@
-framework module ZYPictureViewer {
-  umbrella header "ZYPictureViewer-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module Pods_ZYPictureViewer_Example {
-  umbrella header "Pods-ZYPictureViewer_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

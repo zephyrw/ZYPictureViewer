@@ -3,5 +3,9 @@ use_frameworks!
 target 'ZYPictureViewer_Example' do
 
   pod 'ZYPictureViewer', :path => '../'
+  pod 'WCDB.swift'
+  pod 'Alamofire'
+  pod 'HandyJSON'
+  pod 'MJRefresh'
 
 end

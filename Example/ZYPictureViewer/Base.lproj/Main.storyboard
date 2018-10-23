@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gGD-ne-a4i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="zVO-Q4-OkF">
+            <objects>
+                <navigationController id="gGD-ne-a4i" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QBo-2s-fWx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wqh-Rf-Bw8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="55d-HQ-KSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="133"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -20,11 +36,43 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EG-zK-HDO">
+                                <rect key="frame" x="66" y="319" width="243" height="29"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.58431372550000005" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="浏览网络图片"/>
+                                <connections>
+                                    <action selector="switchToShowRemoteImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vn2-uR-bR9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L3-Yc-FsB">
+                                <rect key="frame" x="66" y="268" width="243" height="29"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.58431372550000005" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="浏览本地图片"/>
+                                <connections>
+                                    <action selector="switchToShowLocalImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="daM-i7-rwP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6EG-zK-HDO" firstAttribute="leading" secondItem="6L3-Yc-FsB" secondAttribute="leading" id="1iG-i0-DoW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6L3-Yc-FsB" secondAttribute="trailing" constant="50" id="BKc-Zc-DjX"/>
+                            <constraint firstItem="6L3-Yc-FsB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="EGb-oG-bNk"/>
+                            <constraint firstItem="6EG-zK-HDO" firstAttribute="top" secondItem="6L3-Yc-FsB" secondAttribute="bottom" constant="22" id="HEm-X8-wVB"/>
+                            <constraint firstItem="6EG-zK-HDO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HGA-Pk-132"/>
+                            <constraint firstItem="6L3-Yc-FsB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bhf-ge-tMs"/>
+                            <constraint firstItem="6EG-zK-HDO" firstAttribute="trailing" secondItem="6L3-Yc-FsB" secondAttribute="trailing" id="ehq-va-lU5"/>
+                            <constraint firstItem="6EG-zK-HDO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kxP-Lj-A9A"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="iRv-aq-0fN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

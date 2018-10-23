@@ -1,16 +1,50 @@
 PODS:
-  - ZYPictureViewer (0.1.0)
+  - Alamofire (4.7.3)
+  - HandyJSON (4.2.0)
+  - MJRefresh (3.1.15.7)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SQLiteRepairKit (1.2.1):
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDB.swift (1.0.7.5):
+    - SQLiteRepairKit (~> 1.2.0)
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDBOptimizedSQLCipher (1.2.1)
+  - ZYPictureViewer (0.1.0):
+    - SDWebImage (~> 4.4.2)
 
 DEPENDENCIES:
+  - Alamofire
+  - HandyJSON
+  - MJRefresh
+  - WCDB.swift
   - ZYPictureViewer (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - HandyJSON
+    - MJRefresh
+    - SDWebImage
+    - SQLiteRepairKit
+    - WCDB.swift
+    - WCDBOptimizedSQLCipher
 
 EXTERNAL SOURCES:
   ZYPictureViewer:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ZYPictureViewer: 9581dfef5607eb5390d34e3d5eff93e782e30b4a
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SQLiteRepairKit: 4d21bab9eff6a273f63da6815a0d1659e53f5bde
+  WCDB.swift: 87aee41f5ca3aded9c6f9b68b0ef3e88918a5ee2
+  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
+  ZYPictureViewer: a4f491ce0a413ad7b3a38b6d396eeb47b2ca7757
 
-PODFILE CHECKSUM: 025da8714df74e7ecb893c64a5732084c6ab8f99
+PODFILE CHECKSUM: 6b6433bf7e63bbcefc2310f721625087c00c6e13
 
 COCOAPODS: 1.5.3
