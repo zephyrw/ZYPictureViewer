@@ -139,7 +139,7 @@ class ZYProgressBg: UIView {
         shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = height
-        shapeLayer.lineCap = kCALineCapSquare
+        shapeLayer.lineCap = .square
         layer.addSublayer(shapeLayer)
         self.shapeLayer = shapeLayer
     }

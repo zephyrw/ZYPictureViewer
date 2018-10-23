@@ -23,7 +23,7 @@ class LoadLocalPictureViewController: UIViewController {
             let photoCount = arc4random() % 9 + 1
             var photos = [Photo]()
             for _ in 0..<photoCount {
-                photos.append(Photo(thumbImage: UIImage(named: "\(arc4random() % 21 + 1).jpg")!, remoteImageURL: nil))
+                photos.append(Photo(thumbImage: UIImage(named: "\(arc4random() % 58 + 1).jpg")!, remoteImageURL: nil))
             }
             info.photos = photos
             infoList.append(info)

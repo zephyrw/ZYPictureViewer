@@ -72,13 +72,13 @@ public class ZYPictureViewerController: UIPageViewController {
 //    fileprivate let pageControl = UIPageControl(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
     fileprivate let pageIndexLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ZY_SCREEN_WIDTH, height: 30))
     
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
+    override public init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         if let options = options {
             let mutDict : NSMutableDictionary = NSMutableDictionary(dictionary: options)
-            mutDict.setValue(NSNumber(value: 20), forKey: UIPageViewControllerOptionInterPageSpacingKey)
-            super.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: mutDict as? [String : Any])
+            mutDict.setValue(NSNumber(value: 20), forKey: UIPageViewController.OptionsKey.interPageSpacing.rawValue)
+            super.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: mutDict as? [UIPageViewController.OptionsKey : Any])
         } else {
-            super.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: [UIPageViewControllerOptionInterPageSpacingKey : NSNumber(value: 20)])
+            super.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(value: 20)])
         }
         self.modalPresentationStyle = .custom
         self.modalTransitionStyle = .crossDissolve
@@ -153,7 +153,7 @@ public class ZYPictureViewerController: UIPageViewController {
     }
     
     fileprivate func hideStatusBarIfNeeded() {
-        presentingViewController?.view.window?.windowLevel = UIWindowLevelStatusBar
+        presentingViewController?.view.window?.windowLevel = UIWindow.Level.statusBar
     }
     
     fileprivate func setupGesture() {
@@ -273,6 +273,7 @@ extension ZYPictureViewerController: ZYAnimationTransitionControllerDelegate {
     
     func onDismiss(fromView: UIView, toView: UIView) {
         blackBg.alpha = 0
+        pageIndexLabel.alpha = 0
         guard let currentSourceImageView = currentSourceImageView else {
             currentImageScrollView.imageScrollView.imageView.frame = CGRect(x: view.zy_width / 2, y: view.zy_height / 2, width: 1, height: 1)
             return

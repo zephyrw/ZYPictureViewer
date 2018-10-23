@@ -58,7 +58,7 @@ class ZYAnimationTransitionController: NSObject {
     
     fileprivate func startAnimation(transitionContext: UIViewControllerContextTransitioning, animations: @escaping () -> Void, completion: @escaping () -> Void) {
         UIApplication.shared.beginIgnoringInteractionEvents()
-        UIView.animate(withDuration: self.transitionDuration(using: self as? UIViewControllerContextTransitioning), delay: 0, options: UIViewAnimationOptions(rawValue: 7 << 16), animations: animations, completion: { _ in
+        UIView.animate(withDuration: self.transitionDuration(using: self as? UIViewControllerContextTransitioning), delay: 0, options: UIView.AnimationOptions(rawValue: 7 << 16), animations: animations, completion: { _ in
             UIApplication.shared.endIgnoringInteractionEvents()
             completion()
         })
