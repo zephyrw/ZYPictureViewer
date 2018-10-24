@@ -66,7 +66,11 @@ class ZYImageScrollView: UIScrollView {
         guard let image = currentImage else { return }
         let toH = image.size.height * zy_width / image.size.width
         imageView.frame = CGRect(x: 0, y: 0, width: zy_width, height: toH)
-        contentSize = bounds.size
+        if toH < zy_height {
+            contentSize = bounds.size
+        } else {
+            contentSize = CGSize(width: zy_width, height: toH)
+        }
     }
     
     fileprivate func adjustCenter() {
@@ -118,7 +122,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if zoomScale <= 1 && !isDismissing {
+        if zoomScale <= 1 && !isDismissing && (imageView.zy_height < zy_height || (imageView.zy_height > zy_height && contentOffset.y < 0)) {
             contentOffset.y = 0
             if !avoidUp {
                 doPan()

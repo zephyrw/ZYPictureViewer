@@ -75,6 +75,7 @@
 		F073BCA4217EFE3E004A4B04 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F073BC6A217EFE3D004A4B04 /* 7.jpg */; };
 		F073BCA5217EFE3E004A4B04 /* 42.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F073BC6B217EFE3E004A4B04 /* 42.jpg */; };
 		F073BCA6217EFE3E004A4B04 /* 43.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F073BC6C217EFE3E004A4B04 /* 43.jpg */; };
+		F073BCA8217F1DCF004A4B04 /* tips.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F073BCA7217F1DCF004A4B04 /* tips.jpg */; };
 		F0F0035120EDF3FA00585D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0035020EDF3FA00585D88 /* AppDelegate.swift */; };
 		F0F0035620EDF3FA00585D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F0035420EDF3FA00585D88 /* Main.storyboard */; };
 		F0F0035820EDF3FB00585D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0F0035720EDF3FB00585D88 /* Assets.xcassets */; };
@@ -155,6 +156,7 @@
 		F073BC6A217EFE3D004A4B04 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
 		F073BC6B217EFE3E004A4B04 /* 42.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 42.jpg; sourceTree = "<group>"; };
 		F073BC6C217EFE3E004A4B04 /* 43.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 43.jpg; sourceTree = "<group>"; };
+		F073BCA7217F1DCF004A4B04 /* tips.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tips.jpg; sourceTree = "<group>"; };
 		F0F0034D20EDF3FA00585D88 /* ZYPictureViewer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYPictureViewer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F0035020EDF3FA00585D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0F0035520EDF3FA00585D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				F073BC41217EFE3B004A4B04 /* 56.jpg */,
 				F073BC50217EFE3C004A4B04 /* 57.jpg */,
 				F073BC4D217EFE3B004A4B04 /* 58.jpg */,
+				F073BCA7217F1DCF004A4B04 /* tips.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				F073BC86217EFE3E004A4B04 /* 8.jpg in Resources */,
 				F073BC7E217EFE3E004A4B04 /* 44.jpg in Resources */,
 				F073BC88217EFE3E004A4B04 /* 49.jpg in Resources */,
+				F073BCA8217F1DCF004A4B04 /* tips.jpg in Resources */,
 				F073BC6E217EFE3E004A4B04 /* 28.jpg in Resources */,
 				F073BC8C217EFE3E004A4B04 /* 46.jpg in Resources */,
 				F0F0035620EDF3FA00585D88 /* Main.storyboard in Resources */,
@@ -594,6 +598,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -647,6 +652,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
