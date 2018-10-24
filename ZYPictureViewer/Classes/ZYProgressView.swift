@@ -1,5 +1,5 @@
 //
-//  ProgressView.swift
+//  ZYProgressView.swift
 //  PictureViewer
 //
 //  Created by Zephyr on 2018/7/3.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ZY_ProgressView: UIView {
+class ZYProgressView: UIView {
     
-    private static let share = ZY_ProgressView()
+    private static let share = ZYProgressView()
     private lazy var progressBgs : [ZYProgressBg] = {
         var views = [ZYProgressBg]()
         for _ in 0..<maxUseViewCount {
@@ -30,7 +30,7 @@ class ZY_ProgressView: UIView {
     private let maxUseViewCount = 3
     private var usedViewCount = 0 {
         didSet{
-            print("used view count: \(usedViewCount)")
+//            print("used view count: \(usedViewCount)")
             if usedViewCount > maxUseViewCount {
                 usedViewCount = maxUseViewCount
             }
@@ -46,13 +46,13 @@ class ZY_ProgressView: UIView {
     
     class func show(in view: UIView, progress:CGFloat) {
         DispatchQueue.main.async {
-            ZY_ProgressView.share.updateProgressBgWithContainerView(containerView: view, progress: progress)
+            ZYProgressView.share.updateProgressBgWithContainerView(containerView: view, progress: progress)
         }
     }
     
     class func dismiss(containerView: UIView) {
         DispatchQueue.main.async {
-            ZY_ProgressView.share.removeSingleProgressBg(containerView: containerView, progressBg: nil)
+            ZYProgressView.share.removeSingleProgressBg(containerView: containerView, progressBg: nil)
         }
     }
     

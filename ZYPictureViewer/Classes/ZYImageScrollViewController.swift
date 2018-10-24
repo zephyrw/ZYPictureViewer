@@ -20,7 +20,7 @@ class ZYImageScrollViewController: UIViewController {
         progressHandler = { [weak self] (finishedSize, totalSize, _) in
             if let strongSelf = self, totalSize > 0 {
                 let progress = CGFloat(finishedSize) / CGFloat(totalSize)
-                ZY_ProgressView.show(in: strongSelf.view, progress: progress)
+                ZYProgressView.show(in: strongSelf.view, progress: progress)
             }
         }
     }
@@ -35,7 +35,7 @@ class ZYImageScrollViewController: UIViewController {
     }
     
     func reloadData() {
-        ZY_ProgressView.dismiss(containerView: view)
+        ZYProgressView.dismiss(containerView: view)
         if let imageHandler = imageHandler {
             imageScrollView.imageView.image = imageHandler()
         }

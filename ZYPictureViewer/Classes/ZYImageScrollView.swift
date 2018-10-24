@@ -133,7 +133,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
     fileprivate func doPan() {
         switch panGestureRecognizer.state {
         case .began:
-            PVLog("began")
+            break
         case .changed:
             let translation = panGestureRecognizer.translation(in: self)
             var percent = CGFloat(fabsf(Float((zy_height - imageView.zy_top - imageView.zy_height / 2) / (zy_height / 2))))
@@ -153,7 +153,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
                 }
             }
         case .possible:
-            PVLog("possible")
+            break
         }
         
     }

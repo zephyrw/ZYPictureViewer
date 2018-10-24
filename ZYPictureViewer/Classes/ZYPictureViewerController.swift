@@ -193,10 +193,6 @@ public class ZYPictureViewerController: UIPageViewController {
             return false
         }
     }
-    
-    deinit {
-        PVLog("")
-    }
 
 }
 
