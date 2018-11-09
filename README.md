@@ -14,9 +14,7 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-<video id="video" controls="" preload="none" poster="https://github.com/zephyrw/ZYPictureViewer/blob/master/preview.png">
-      <source id="mp4" src="https://github.com/zephyrw/ZYPictureViewer/blob/master/preview.mp4" type="video/mp4">
-    </video>
+![image](https://github.com/zephyrw/ZYPictureViewer/blob/master/preview.gif)
 
 ## Installation
 
