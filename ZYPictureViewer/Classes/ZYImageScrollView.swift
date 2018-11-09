@@ -108,7 +108,7 @@ class ZYImageScrollView: UIScrollView {
     deinit {
         imageView.removeObserver(self, forKeyPath: observePath)
     }
-
+    
 }
 
 extension ZYImageScrollView: UIScrollViewDelegate {
@@ -122,7 +122,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if zoomScale <= 1 && !isDismissing && (imageView.zy_height < zy_height || (imageView.zy_height > zy_height && contentOffset.y < 0)) {
+        if zoomScale <= 1 && !isDismissing && imageView.zy_height < zy_height {
             contentOffset.y = 0
             if !avoidUp {
                 doPan()
@@ -144,7 +144,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
             scrollHandler?(percent)
         case .cancelled, .failed, .ended:
             let velocity = panGestureRecognizer.velocity(in: self)
-            if velocity.y > 0 {
+            if velocity.y > 0 && contentOffset.y < 0 {
                 isDismissing = true
                 dismissHandler?()
             } else {
@@ -166,7 +166,7 @@ extension ZYImageScrollView: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if zoomScale <= 1 && !isDismissing {
+        if zoomScale <= 1 && !isDismissing && imageView.zy_height < zy_height {
             let velocity = panGestureRecognizer.velocity(in: self)
             if velocity.y > 0 {
                 isDismissing = true
