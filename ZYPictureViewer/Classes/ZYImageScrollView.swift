@@ -154,7 +154,10 @@ extension ZYImageScrollView: UIScrollViewDelegate {
             }
         case .possible:
             break
+        default:
+            break
         }
+        
         
     }
     
