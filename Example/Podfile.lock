@@ -1,17 +1,17 @@
 PODS:
-  - Alamofire (4.7.3)
-  - HandyJSON (4.2.0)
-  - MJRefresh (3.1.15.7)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
-  - SQLiteRepairKit (1.2.1):
+  - Alamofire (4.8.2)
+  - HandyJSON (5.0.0)
+  - MJRefresh (3.2.0)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDB.swift (1.0.7.5):
+  - WCDB.swift (1.0.8.2):
     - SQLiteRepairKit (~> 1.2.0)
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - WCDBOptimizedSQLCipher (1.2.1)
-  - ZYPictureViewer (1.0.0):
+  - ZYPictureViewer (1.0.3):
     - SDWebImage (~> 4.4.2)
 
 DEPENDENCIES:
@@ -36,15 +36,15 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
-  SQLiteRepairKit: 4d21bab9eff6a273f63da6815a0d1659e53f5bde
-  WCDB.swift: 87aee41f5ca3aded9c6f9b68b0ef3e88918a5ee2
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
+  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
-  ZYPictureViewer: e51446204779fbba35322ccd03aa2042f8025af1
+  ZYPictureViewer: 36282598ab20debd0c0090e9a4ce6b2692d107bc
 
 PODFILE CHECKSUM: a919d022254cc45cc15f5a4f64e6c2c66843fcf6
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

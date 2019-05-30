@@ -74,10 +74,8 @@ extension ZYAnimationTransitionController: UIViewControllerAnimatedTransitioning
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        let fromViewController = transitionContext.viewController(forKey: .from)
-        let toViewController = transitionContext.viewController(forKey: .to)
-        guard let fromVC = fromViewController else { return }
-        guard let toVC = toViewController else { return }
+        guard let fromVC = transitionContext.viewController(forKey: .from) else { return }
+        guard let toVC = transitionContext.viewController(forKey: .to) else { return }
         if isPresenting {
             present(transitionContext: transitionContext, container: containerView, fromView: fromVC.view, toView: toVC.view) {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -87,7 +85,6 @@ extension ZYAnimationTransitionController: UIViewControllerAnimatedTransitioning
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
         }
-        
     }
     
 }

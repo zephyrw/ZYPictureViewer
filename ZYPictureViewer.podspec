@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZYPictureViewer'
-  s.version          = '1.0.1'
+  s.version          = '1.0.3'
   s.summary          = 'A picture viewer like wechat, sina weibo'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'ZYPictureViewer/Classes/**/*'
   # s.resource_bundles = { 'ZYPictureViewer' => ['ZYPictureViewer/Assets/*.png'] }
 
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
