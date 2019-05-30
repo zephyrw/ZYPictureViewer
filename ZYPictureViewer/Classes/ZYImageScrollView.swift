@@ -152,13 +152,9 @@ extension ZYImageScrollView: UIScrollViewDelegate {
                     self.imageView.transform = CGAffineTransform(translationX: 0, y: 0)
                 }
             }
-        case .possible:
-            break
         default:
             break
         }
-        
-        
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
